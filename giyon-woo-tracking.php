@@ -55,7 +55,7 @@ function giyon_tracking_column_content($column_key, $order)
 {
     if ($column_key == 'giyon-woo-tracking') {
         $data = giyon_woo_tracking_get_data($order->id);
-        echo "{$data['shipping_company']} <b>{$data['tracking_number']}</b> <i>{$data['tracking_link']}</i>";
+        echo "<a target='_blank' href='{$data['tracking_link']}'>{$data['shipping_company']} <b>{$data['tracking_number']}</b> <i>{$data['tracking_link']}</i></a>";
     }
 }
 
@@ -78,7 +78,7 @@ function giyon_woo_tracking_get_data($order_id)
     $order = wc_get_order($order_id);
     $shipping_company = $order->get_meta('giyon-woo-tracking-shipping_company');
     $tracking_number = $order->get_meta('giyon-woo-tracking-tracking_number');
-    $tracking_link = '' == $tracking_number ? '' : site_url("giyon-woo-tracking/{$order_id}");
+    $tracking_link = '' == $tracking_number ? '' : site_url("t/{$order_id}");
     return [
         'shipping_company' => $shipping_company,
         'tracking_number' => $tracking_number,
@@ -117,33 +117,25 @@ function giyon_woo_tracking_set()
 add_action('init', function () {
     $url = explode('/', $_SERVER['REQUEST_URI']);
     $page = $url[1];
-    if (!$page || !in_array($page, ['giyon-woo-tracking'])) return true;
+    if (!$page || !in_array($page, ['t'])) return true;
 
     $order_id = $url[2];
     $data = giyon_woo_tracking_get_data($order_id);
     if ('Yamato' == $data['shipping_company']) wp_redirect('https://track.kuronekoyamato.co.jp/english/tracking');
     else {
-        $japan_post = wp_remote_get("https://trackings.post.japanpost.jp/services/srv/search/direct?reqCodeNo1={$data['tracking_number']}&searchKind=S002&locale=en");
+        $japan_post = wp_remote_get("https://trackings.post.japanpost.jp/services/sp/srv/search/direct?locale=en&reqCodeNo={$data['tracking_number']}", [
+            'user-agent' => 'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Mobile Safari/537.36'
+        ]);
         $body = $japan_post['body'];
-        $body = end(explode('</h1>', $body));
-        $body = reset(explode('<input type="hidden" name="trackingNo"', $body));
+        $body = end(explode('</h2>', $body));
+        $body = reset(explode('<ul', $body));
+        $scrape_css = plugin_dir_url(__FILE__) . 'giyon-woo-tracking-scrape.css';
         echo "
-            <style type='text/css'>
-                table {
-                    margin: 0 auto;
-                }
-                table, th, td {
-                    border: 1px solid black;
-                    border-collapse: collapse;
-                    padding: 3px 10px;
-                }
-                .container {
-                    text-align: center;
-                    margin-top: 20px;
-                }
-            </style>
-            <div class='container'>$body</div>
+            <link rel='stylesheet' type='text/css' href='https://trackings.post.japanpost.jp/services/css/sp/smt.css' media='screen,print' />
+            <link rel='stylesheet' type='text/css' href='https://trackings.post.japanpost.jp/services/css/sp/jquery.mobile-1.1.1.min.css' media='screen,print' />
+            <link rel='stylesheet' type='text/css' href='{$scrape_css}' media='screen,print' />
+            <div>$body</div>
         ";
     }
-    exit();
+    exit;
 });

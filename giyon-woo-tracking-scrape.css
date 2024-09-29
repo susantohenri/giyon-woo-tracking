@@ -1,0 +1,18 @@
+body>div {
+    font-size: xx-large;
+    text-align: center;
+}
+
+@media (min-width:1024px) {
+    body>div {
+        font-size: medium;
+        padding: 0 25%;
+    }
+}
+
+.inquiry_number p.title,
+dl.tracking_form dt {
+    background-color: rgba(167, 36, 101, 1);
+    color: white;
+    padding: 10px 0;
+}
