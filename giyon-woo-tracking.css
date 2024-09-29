@@ -1,0 +1,17 @@
+.giyon-woo-tracking {
+    padding: 10px 0;
+}
+
+.giyon-woo-tracking label {
+    font-weight: bold;
+}
+
+.giyon-woo-tracking input,
+.giyon-woo-tracking select {
+    width: 100%;
+    margin: 5px 0 20px;
+}
+
+.giyon-woo-tracking div {
+    text-align: right;
+}

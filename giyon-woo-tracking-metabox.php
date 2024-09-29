@@ -1,19 +1,16 @@
-<ul class="order_actions submitbox">
+<div class="giyon-woo-tracking">
 
-    <li class="wide">
-        Add, edit, or remove the tracking info. Once done, click on the "save order" button to update order tracking info.
-    </li>
+    <label>Shipping Company</label>
+    <select>
+        <option value="Japan Post">Japan Post</option>
+        <option value="Yamato">Yamato</option>
+    </select>
+    <label>Tracking Number</label>
+    <input type="text" placeholder="Enter Tracking No." />
+    <label>Tracking Link</label>
+    <input type="text" disabled />
+    <div>
+        <button class="button button-primary">Simpan</button>
+    </div>
 
-    <li class="wide">
-        <b>Shipping Company</b>
-        <br>
-        <select style="width: 100%;">
-            <option>Japan Post</option>
-        </select>
-    </li>
-
-    <li class="wide">
-        <button type="submit" class="button button-primary" name="save" value="Update">Update</button>
-    </li>
-
-</ul>
+</div>
