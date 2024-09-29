@@ -1,0 +1,127 @@
+{
+    "order": {
+        "customer_id": null,
+        "refunds": null
+    },
+    "sent_to_admin": false,
+    "plain_text": false,
+    "email": {
+        "id": "customer_completed_order",
+        "title": "Pesanan selesai",
+        "enabled": "yes",
+        "description": "Email untuk pesanan yang telah dikirim ke pelanggan ketika pesanan mereka sudah ditandai selesai dan biasanya menunjukkan bahwa pesanan mereka telah dikirimkan.",
+        "heading": "",
+        "subject": "",
+        "template_plain": "emails\/plain\/customer-completed-order.php",
+        "template_html": "emails\/customer-completed-order.php",
+        "template_base": "\/home\/giyon.my.id\/public_html\/wp-content\/plugins\/woocommerce\/templates\/",
+        "recipient": "henry.dinus@gmail.com",
+        "object": {
+            "customer_id": null,
+            "refunds": null
+        },
+        "mime_boundary": null,
+        "mime_boundary_header": null,
+        "sending": true,
+        "plain_search": [
+            "\/\r\/",
+            "\/&(nbsp|#0*160);\/i",
+            "\/&(quot|rdquo|ldquo|#0*8220|#0*8221|#0*147|#0*148);\/i",
+            "\/&(apos|rsquo|lsquo|#0*8216|#0*8217);\/i",
+            "\/&gt;\/i",
+            "\/&lt;\/i",
+            "\/&#0*38;\/i",
+            "\/&amp;\/i",
+            "\/&(copy|#0*169);\/i",
+            "\/&(trade|#0*8482|#0*153);\/i",
+            "\/&(reg|#0*174);\/i",
+            "\/&(mdash|#0*151|#0*8212);\/i",
+            "\/&(ndash|minus|#0*8211|#0*8722);\/i",
+            "\/&(bull|#0*149|#0*8226);\/i",
+            "\/&(pound|#0*163);\/i",
+            "\/&(euro|#0*8364);\/i",
+            "\/&(dollar|#0*36);\/i",
+            "\/&[^&\\s;]+;\/i",
+            "\/[ ]{2,}\/"
+        ],
+        "plain_replace": [
+            "",
+            " ",
+            "\"",
+            "'",
+            ">",
+            "<",
+            "&",
+            "&",
+            "(c)",
+            "(tm)",
+            "(R)",
+            "--",
+            "-",
+            "*",
+            "\u00a3",
+            "EUR",
+            "$",
+            "",
+            " "
+        ],
+        "find": [],
+        "replace": [],
+        "email_type": "html",
+        "plugin_id": "woocommerce_",
+        "errors": [],
+        "settings": {
+            "enabled": "yes",
+            "subject": "Pesanan {site_title} Anda telah selesai",
+            "heading": "Terima kasih telah berbelanja di kami",
+            "additional_content": "Terima kasih telah berbelanja di Ukhti Osaka.",
+            "email_type": "html"
+        },
+        "form_fields": {
+            "enabled": {
+                "title": "Aktifkan\/Nonaktifkan",
+                "type": "checkbox",
+                "label": "Aktifkan notifikasi e-mail ini",
+                "default": "yes"
+            },
+            "subject": {
+                "title": "Judul",
+                "type": "text",
+                "desc_tip": true,
+                "description": "Placeholder yang tersedia: <code>{site_title}&lt;\/code&gt;, &lt;code&gt;{site_address}&lt;\/code&gt;, &lt;code&gt;{site_url}&lt;\/code&gt;, &lt;code&gt;{order_date}&lt;\/code&gt;, &lt;code&gt;{order_number}<\/code>",
+                "placeholder": "Pesanan {site_title} Anda telah selesai",
+                "default": ""
+            },
+            "heading": {
+                "title": "Judul E-mail",
+                "type": "text",
+                "desc_tip": true,
+                "description": "Placeholder yang tersedia: <code>{site_title}&lt;\/code&gt;, &lt;code&gt;{site_address}&lt;\/code&gt;, &lt;code&gt;{site_url}&lt;\/code&gt;, &lt;code&gt;{order_date}&lt;\/code&gt;, &lt;code&gt;{order_number}<\/code>",
+                "placeholder": "Terima kasih telah berbelanja di kami",
+                "default": ""
+            },
+            "additional_content": {
+                "title": "Konten tambahan",
+                "description": "Teks yang akan ditampilkan di bawah konten email utama. Placeholder yang tersedia: <code>{site_title}&lt;\/code&gt;, &lt;code&gt;{site_address}&lt;\/code&gt;, &lt;code&gt;{site_url}&lt;\/code&gt;, &lt;code&gt;{order_date}&lt;\/code&gt;, &lt;code&gt;{order_number}<\/code>",
+                "css": "width:400px; height: 75px;",
+                "placeholder": "N\/A",
+                "type": "textarea",
+                "default": "Terima kasih telah berbelanja di kami.",
+                "desc_tip": true
+            },
+            "email_type": {
+                "title": "Tipe email",
+                "type": "select",
+                "description": "Pilih format email yang akan dikirim.",
+                "default": "html",
+                "class": "email_type wc-enhanced-select",
+                "options": {
+                    "plain": "Plain text",
+                    "html": "HTML",
+                    "multipart": "Multipart"
+                },
+                "desc_tip": true
+            }
+        }
+    }
+}
