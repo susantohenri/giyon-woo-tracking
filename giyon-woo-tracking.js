@@ -8,6 +8,14 @@ jQuery(() => {
     giyon_woo_tracking_get(order_id)
 
     giyon_woo_tracking.metabox
+        .find(`[type="text"]`).keypress(e => {
+            if (13 === e.keyCode) {
+                e.preventDefault()
+                giyon_woo_tracking.metabox.find(`button`).click()
+            }
+        })
+
+    giyon_woo_tracking.metabox
         .find(`button`)
         .click(e => {
             e.preventDefault()
