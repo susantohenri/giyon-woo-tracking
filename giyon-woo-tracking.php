@@ -90,6 +90,7 @@ function giyon_woo_tracking_get()
 {
     $order_id = $_GET['order_id'];
     $data = giyon_woo_tracking_get_data($order_id);
+    if ('' == $data['shipping_company']) $data['shipping_company'] = 'Japan Post';
     exit(json_encode($data));
 }
 
