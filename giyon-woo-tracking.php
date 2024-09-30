@@ -34,10 +34,10 @@ function giyon_tracking_meta_box()
 
 function giyon_tracking_meta_box_content()
 {
-    wp_register_style('giyon-woo-tracking', plugin_dir_url(__FILE__) . 'giyon-woo-tracking.css');
+    wp_register_style('giyon-woo-tracking', plugin_dir_url(__FILE__) . 'giyon-woo-tracking.css', [], '1.0.0');
     wp_enqueue_style('giyon-woo-tracking');
 
-    wp_register_script('giyon-woo-tracking', plugin_dir_url(__FILE__) . 'giyon-woo-tracking.js', array('jquery'));
+    wp_register_script('giyon-woo-tracking', plugin_dir_url(__FILE__) . 'giyon-woo-tracking.js', ['jquery'], '1.0.0');
     wp_enqueue_script('giyon-woo-tracking');
     wp_localize_script('giyon-woo-tracking', 'giyon_woo_tracking', [
         'ajax' => admin_url('admin-ajax.php'),

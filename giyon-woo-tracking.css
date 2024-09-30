@@ -9,9 +9,18 @@
 .giyon-woo-tracking input,
 .giyon-woo-tracking select {
     width: 100%;
-    margin: 5px 0 20px;
+    margin: 5px 0 15px;
 }
 
-.giyon-woo-tracking div {
+.giyon-woo-tracking div:has(b) {
+    border: 1px solid #C3C4C7;
+    border-left: 7px solid green;
+    text-align: center;
+    margin-bottom: 20px;
+    padding: 5px;
+    display: none;
+}
+
+.giyon-woo-tracking div:has(button) {
     text-align: right;
 }

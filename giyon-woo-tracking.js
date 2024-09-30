@@ -35,5 +35,9 @@ function giyon_woo_tracking_set(order_id) {
         tracking_number: giyon_woo_tracking.metabox.find(`input`).eq(0).val()
     }, response => {
         giyon_woo_tracking_get(order_id)
+        jQuery(`.giyon-woo-tracking div:has(b)`).show()
+        setTimeout(() => {
+            jQuery(`.giyon-woo-tracking div:has(b)`).fadeOut()
+        }, 2000)
     })
 }
