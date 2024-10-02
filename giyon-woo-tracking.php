@@ -121,6 +121,8 @@ add_action('init', function () {
     if (!$page || !in_array($page, ['t'])) return true;
 
     $order_id = $url[2];
+    if ('' == $order_id) return true;
+
     $data = giyon_woo_tracking_get_data($order_id);
     if ('Yamato' == $data['shipping_company']) wp_redirect('https://track.kuronekoyamato.co.jp/english/tracking');
     else {
